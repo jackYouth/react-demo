@@ -1,8 +1,10 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { AppliedRoute, UnauthenticatedRoute } from 'react-router';
 import Loadable from 'react-loadable';
-import MyLoadingComponent from './components/MyLoadingComponent';
+import MyLoadingComponent from './basicComponents/MyLoadingComponent';
+import AppliedRoute from './basicComponents/AppliedRoute';
+import UnauthenticatedRoute from './basicComponents/UnauthenticatedRoute';
+// import AuthenticatedRoute from "./basicComponents/AuthenticatedRoute";
 
 const AsyncApp = Loadable({
   loader() {
@@ -20,12 +22,12 @@ const AsyncPage1 = Loadable({
 
 const AsyncNotFound = Loadable({
   loader() {
-    return import('./components/NotFound');
+    return import('./basicComponents/NotFound');
   },
   loading: MyLoadingComponent
 });
 
-export default ({ childProps }) => {
+export default ({ childProps }) => (
   <Switch>
     <AppliedRoute path="/" exact component={AsyncApp} props={childProps} />
     <UnauthenticatedRoute
@@ -36,5 +38,5 @@ export default ({ childProps }) => {
     />
     {/* Finally, catch all unmatched routes */}
     <Route component={AsyncNotFound} />
-  </Switch>;
-};
+  </Switch>
+);
