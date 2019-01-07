@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
-import Page1 from '../components/Page1';
+import App from '../components/App';
 
 const mapStateToProps = (state, ownProps) => {
-  const { page1 } = state;
+  const { app } = state;
   return {
     ...ownProps,
-    ...page1,
+    ...app,
   };
 };
 
@@ -18,4 +18,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Page1);
+)(App);

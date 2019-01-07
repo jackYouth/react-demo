@@ -1,3 +1,5 @@
 {
-  "extends": "react-demo"
+    "extends": [
+        "eslint:recommended"
+    ]
 }
